@@ -11,10 +11,8 @@
 
 //Load local modules
 var db      = require('./config/connection');
-var config  = require('./config/config');
-//var User    = require('./models/user');
-var Profile = require('./models/profile');
-//var routes  = require('./routes');
+var config  = require('./config/config'); 
+var Profile = require('./models/profile'); 
 
 //instantiate local variables
 var app     = express();

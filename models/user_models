@@ -1,0 +1,35 @@
+======================
+git lab user model
+======================
+User
+-------------------------------
+	firstName: String
+	lastName: String
+	email:String
+	username:String
+
+user_profile
+-------------------------------
+    name: firstName + " " + lastName
+	activity:[]
+	groups:[]
+	contirubtedProjects:[]
+	personalProjects:[]
+	snippets: String
+	becameMemberSince:Date
+	profileImg: String
+	publicEmail: boolean
+	skype: String
+	linkedIn: String
+	twitter: String
+	Location: String
+	organization: String
+	bio
+	
+Account
+-------------------------------
+	privateToken: String
+	socialSignIn:[]
+	changeUsername: boolean 
+	removeAccount:boolean
+	twoFactorAuthentication: boolean

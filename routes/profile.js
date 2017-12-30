@@ -1,26 +1,26 @@
 var express = require('express');
 var router  = express.Router();
-
-//var session = express('express-session');
-
-//load local/custom modules
-var Profile = require('../controllers/profile');
  
+
+/*//load local/custom modules
+var Profile = require('../controllers/Profile');
+ 
+//Mount all routes on router express instance
 
 //create  new Profile using validation
-router.post('/signup',Profile.createNewProfile);
+router.post('/',Profile.createNewProfile);
 
 // Retrieve all Profiles
-router.get('/profiles', Profile.getllAllProfile);
+router.get('/', Profile.getAllProfile);
 
 // Retrieve single Profile with ProfileId
-router.get('/profiles/:profileId', Profile.getProfileById);
+router.get('/:ProfileId', Profile.getProfileById);
 
 // Update Profile with ProfileId
-router.put('/profiles/:profileId', Profile.updateProfileInfo);
+router.put('/:ProfileId', Profile.updateProfileInfo);
 
 // Delete Profile with ProfileId
-router.delete('/profiles/:profileId', Profile.deleteProfileById);
+router.delete('/:ProfileId', Profile.deleteProfileById); 
  
-
-module.exports =router;
+//expose router to other files
+module.exports =router;*/

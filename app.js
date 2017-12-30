@@ -1,45 +1,50 @@
- var 
- express = require('express'),
- path    = require('path'),
- favicon = require('serve-favicon'),
- morgan  = require('morgan'),
- cookieParser = require('cookie-parser'),
- bodyParser   = require('body-parser'),
- session      = require('express-session'),
- mongoose     = require('mongoose'),
- multer       = require('multer');
+var express      = require('express'), 
+	morgan       = require('morgan'),
+	cookieParser = require('cookie-parser'),
+	bodyParser   = require('body-parser'),
+	session      = require('express-session'),
+	mongoose     = require('mongoose');
 
-//Load local modules
+
+
+ //Load local modules
 var db      = require('./config/connection');
-var config  = require('./config/config'); 
-var Profile = require('./models/profile'); 
-
-//instantiate local variables
+var config  = require('./config/config');
+var User    = require('./models/user'); 
+var Profile = require('./models/profile');
+var display = require('./lib/utils').showMsg; 
+ 
+//instantiate express server
 var app     = express();
-// Require user routes
-var router = require('./routes');
-
-//set configuration
+ 
+//configuration your app
 app.set('PORT', config.PORT) 
 app.set('SECRET', config.SECRET) 
 
-//use middlewares 
-// use body parser so we can get info from POST and/or URL parameters
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json()); 
-
-//use morgan to log requests to the console
-app.use(morgan('dev'));  
-app.use(cookieParser());
-app.use(session({secret:"gjkjfdgndjnb",resave:false, saveUninitialized:true}));
- 
 //strat DB connection
 db.connectMongoDB(mongoose);
 
-//let router uses express app
-router(app);
+//use middlewares
+app.use(bodyParser.json());//parse json object from html body
+app.use(morgan('dev')); //Logging HTTP Method and URL 
+app.use(cookieParser());
+app.use(session(
+	{secret:"kjlrtgsdf",
+	resave:false, 
+	saveUninitialized:true}));
+
+/*
+TODO: 
+authentication middleware using passportjs and third party passport strategies [facebook & google+]
+....
+*/
+
  
-app.listen(app.get('PORT'), function(){
-	console.log("\nEXPRESS SERVER APP STARTED LISTENING ON PORT "+app.get('PORT')+"!");
-	console.error('PRESS CTRL+C TO EXIT\n'); 
+// Require user routes
+var router =require('./routes');
+router(app); 
+ 
+app.listen(app.get('PORT'), function(){   
+    display("\nEXPRESS SERVER APP STARTED LISTENING REQUESTS ON PORT "+app.get('PORT')+"!");
+    display('PRESS CTRL+C TO EXIT\n'); 
 });

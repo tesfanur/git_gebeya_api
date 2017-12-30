@@ -1,0 +1,61 @@
+User:
+======================
+id: Number
+username: String
+password: String
+userType: String
+
+Station:
+======================
+stationId: Number
+StationName: String
+locationFromStartingPoint: Number
+
+
+Schedule:
+======================
+scheduleId: Number
+sourceStationId:ObjectId
+destinationStationId: Number
+price: Number
+distanceBetweenStations: Number
+
+Ticket:
+======================
+ticketid:Number
+ticketType:String
+price:Number
+status
+passengerId: Number
+sourceStationId: Number
+destinationStationId: Number
+dateTicketBought:Date
+dateTicketReturned: Date
+
+Passenger:
+======================
+id: Number
+fullName: String
+age: Number
+address:String
+phoneNumber:String
+
+Payment:
+======================
+id:Number
+ticketId: ObjectId
+amountPaid: Number
+
+ReturnPayment:
+======================
+id:Number
+ticketId: ObjectId
+amountReturned: Number
+
+FAQs:
+=================
+id:Number
+datePosted: Date
+postedBy: ObjectId
+question: String
+answer: String

@@ -6,21 +6,24 @@ var router  = express.Router();
 //load local/custom modules
 var User = require('../controllers/user');
  
+//Mount all routes on router express instance
 
 //create  new user using validation
 router.post('/signup',User.createNewUser);
 
 // Retrieve all users
-router.get('/users', User.getllAllUser);
+router.get('/', User.getAllUser);
 
 // Retrieve single user with UserId
-router.get('/users/:userId', User.getUserById);
+router.get('/:userId', User.getUserById);
 
 // Update user with userId
-router.put('/users/:userId', User.updateUserInfo);
+router.put('/:userId', User.updateUserInfo);
 
 // Delete user with userId
-router.delete('/users/:userId', User.deleteUserById);
+router.delete('/:userId', User.deleteUserById);
+
+//router.get('/', User.homepage);
  
- //expose router to other files
+//expose router to other files
 module.exports =router;
